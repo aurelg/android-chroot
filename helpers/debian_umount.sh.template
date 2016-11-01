@@ -1,0 +1,8 @@
+# Should go in __ANDROIDSTORAGE__/debian_umount.sh
+for i in proc dev/pts dev sys;
+do
+	umount __ANDROIDSTORAGE__/__CHROOTDIRNAME__/$i
+done
+umount __ANDROIDSTORAGE__/__CHROOTDIRNAME__
+ANDROIDLOOP=`losetup -a | grep __ANDROIDSTORAGE__/__IMAGENAME__ | awk -F: '{print $1}'`
+losetup -d $ANDROIDLOOP

@@ -1,0 +1,9 @@
+# Should go in __ANDROIDSTORAGE__/debian_mount.sh
+ANDROIDLOOP=`losetup -f`
+losetup $ANDROIDLOOP __ANDROIDSTORAGE__/__IMAGENAME__
+[ ! -d __ANDROIDSTORAGE__/__CHROOTDIRNAME__ ] && mkdir -p  __ANDROIDSTORAGE__/__CHROOTDIRNAME__
+mount -t ext2 $ANDROIDLOOP __ANDROIDSTORAGE__/__CHROOTDIRNAME__
+for i in proc dev dev/pts sys;
+do
+	mount -o bind /$i __ANDROIDSTORAGE__/__CHROOTDIRNAME__/$i
+done

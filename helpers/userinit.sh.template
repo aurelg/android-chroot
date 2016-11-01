@@ -1,0 +1,4 @@
+# Should be in /data/local
+# see https://android.stackexchange.com/questions/6558/how-can-i-run-a-script-on-boot
+# Does not work :-/
+logwrapper /system/bin/sh -x __ANDROIDSTORAGE__/debian_mount.sh
